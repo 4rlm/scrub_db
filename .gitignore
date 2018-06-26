@@ -1,11 +1,15 @@
 /.bundle/
 /.yardoc
+/Gemfile.lock
 /_yardoc/
 /coverage/
-/doc/
 /pkg/
 /spec/reports/
 /tmp/
 
-# rspec failure tracking
-.rspec_status
+utf8_sanitizer-*.gem
+.DS_Store
+.idea/
+.xlsx
+.txt
+!seed.csv
