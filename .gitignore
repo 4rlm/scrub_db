@@ -7,7 +7,7 @@
 /spec/reports/
 /tmp/
 
-utf8_sanitizer-*.gem
+scrub_db-*.gem
 .DS_Store
 .idea/
 .xlsx
