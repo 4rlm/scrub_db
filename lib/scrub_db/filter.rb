@@ -9,6 +9,41 @@ module ScrubDb
       @empty_criteria = args.empty?
     end
 
+    def scrub_oa(hash, target, oa_name, include_or_equal)
+      return hash unless oa_name.present? && !@empty_criteria && target.present?
+      criteria = @args.fetch(oa_name.to_sym, [])
+
+      return hash unless criteria.any?
+      tars = target.is_a?(::String) ? target.split(', ') : target
+      binding.pry if !tars.present?
+
+      scrub_matches = tars.map do |tar|
+        return hash unless criteria.present?
+        if include_or_equal == 'include'
+          criteria.select { |crit| crit if tar.include?(crit) }.join(', ')
+        elsif include_or_equal == 'equal'
+          criteria.select { |crit| crit if tar == crit }.join(', ')
+        end
+      end
+
+      scrub_match = scrub_matches&.uniq&.sort&.join(', ')
+      return hash unless scrub_match.present?
+
+      hash[oa_name.to_sym] << scrub_match
+      hash
+
+      ### Delete below after testing above. ###
+      # scrub_match = scrub_matches&.uniq&.sort&.join(', ')
+      # return hash unless scrub_match.present?
+      # if oa_name.include?('web_neg')
+      #   hash[:web_neg] << "#{oa_name}: #{scrub_match}"
+      # else
+      #   hash[:web_pos] << "#{oa_name}: #{scrub_match}"
+      # end
+    end
+    ######################################
+
+
     # def grab_global_hash
     #   keys = %i[row_id act_name street city state zip full_addr phone url street_f city_f state_f zip_f full_addr_f phone_f url_f url_path web_neg address_status phone_status web_status utf_status]
     #   @global_hash = Hash[keys.map { |a| [a, nil] }]
@@ -35,43 +70,6 @@ module ScrubDb
     #   headers = headers.map(&:to_sym)
     #   hash = Hash[headers.zip(row)]
     # end
-
-
-    ### MOVE THIS TO SEPARATE GEM ###
-    ## scrub_oa, is only called if client OA args were passed at initialization.
-    ## Results listed in url_hash[:web_neg]/[:web_pos], and don't impact or hinder final formatted url.
-    ## Simply adds more details about user's preferences and criteria for the url are.
-
-    def scrub_oa(hash, target, oa_name, include_or_equal)
-      binding.pry
-
-      return hash unless oa_name.present? && !@empty_criteria
-      criteria = @args.fetch(oa_name.to_sym, [])
-
-      return hash unless criteria.any?
-      tars = target.is_a?(::String) ? target.split(', ') : target
-
-      scrub_matches = tars.map do |tar|
-        return hash unless criteria.present?
-        if include_or_equal == 'include'
-          criteria.select { |crit| crit if tar.include?(crit) }.join(', ')
-        elsif include_or_equal == 'equal'
-          criteria.select { |crit| crit if tar == crit }.join(', ')
-        end
-      end
-
-      scrub_match = scrub_matches&.uniq&.sort&.join(', ')
-      return hash unless scrub_match.present?
-      if oa_name.include?('web_neg')
-        hash[:web_neg] << "#{oa_name}: #{scrub_match}"
-      else
-        hash[:web_pos] << "#{oa_name}: #{scrub_match}"
-      end
-
-      binding.pry
-      hash
-    end
-    ######################################
 
 
     # def letter_case_check(str)

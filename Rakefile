@@ -17,27 +17,32 @@ task :console do
   require "active_support/all"
   ARGV.clear
 
-  binding.pry
-  scrubbed_urls = scrub_urls
+  scrubbed_urls = scrub_sample_urls
   binding.pry
 
-  orig_hashes = [{ :row_id=>"1", :url=>"stanleykaufman.com", :act_name=>"Stanley Chevrolet Kaufman\x99_\xCC", :street=>"825 E Fair St", :city=>"Kaufman", :state=>"TX", :zip=>"75142", :phone=>"(888) 457-4391\r\n" }]
-
-  # sanitized_data = Utf8Sanitizer.sanitize(data: orig_hashes)
-  # sanitized_data = Utf8Sanitizer.sanitize
-  # puts sanitized_data.inspect
   IRB.start
 end
 
-def scrub_urls
-  data = %w[www.sample01.net.com sample02.com http://www.sample3.net www.sample04.net/contact_us http://sample05.net www.sample06.sofake www.sample07.com.sofake example08.not.real www.sample09.net/staff/management www.www.sample10.com]
-
-  # args = {data: data}
-  # args.merge!({criteria: WebCriteria.all_web_criteria})
+def scrub_sample_urls
+  urls = %w[
+    smith_acura.com/staff
+    abcrepair.ca
+    austinchevrolet.not.real
+    hertzrentals.com/review
+    londonhyundai.uk/fleet
+    http://www.townbuick.net/staff
+    http://youtube.com/download
+    www.madridinfiniti.es/collision
+    www.mitsubishideals.sofake
+    www.dallassubaru.com.sofake
+    www.quickeats.net/contact_us
+    www.school.edu/teachers
+    www.www.nissancars/inventory
+    www.www.toyotatown.net/staff/management
+    www.www.yellowpages.com/business
+  ]
 
   web_obj = ScrubDb::Web.new(WebCriteria.all_web_criteria)
-  binding.pry
-
-  scrubbed_webs = web_obj.scrub_ext(data)
+  scrubbed_webs = web_obj.scrub_urls(urls)
   binding.pry
 end
