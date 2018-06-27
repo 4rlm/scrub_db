@@ -17,9 +17,8 @@ task :console do
   require "active_support/all"
   ARGV.clear
 
+  binding.pry
   scrubbed_urls = scrub_urls
-
-
   binding.pry
 
   orig_hashes = [{ :row_id=>"1", :url=>"stanleykaufman.com", :act_name=>"Stanley Chevrolet Kaufman\x99_\xCC", :street=>"825 E Fair St", :city=>"Kaufman", :state=>"TX", :zip=>"75142", :phone=>"(888) 457-4391\r\n" }]
