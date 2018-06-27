@@ -12,8 +12,8 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'https://github.com/4rlm/scrub_db'
   spec.license       = "MIT"
 
-  spec.summary       = %q{Summary Coming Soon.  Reserving namespace.  Initial commit.}
-  spec.description   = %q{Description Coming Soon.  Reserving namespace.  Initial commit.}
+  spec.summary       = %q{Scrub data with your custom criteria.  Returns detailed reporting.}
+  spec.description   = %q{Scrub data with your custom criteria.  Returns detailed reporting.  Rspecs coming soon.}
 
   if spec.respond_to?(:metadata)
     spec.metadata['allowed_push_host'] = 'https://rubygems.org'

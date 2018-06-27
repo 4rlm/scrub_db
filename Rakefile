@@ -44,5 +44,4 @@ def scrub_sample_urls
 
   web_obj = ScrubDb::Web.new(WebCriteria.all_web_criteria)
   scrubbed_webs = web_obj.scrub_urls(urls)
-  binding.pry
 end

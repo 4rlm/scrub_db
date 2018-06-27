@@ -8,8 +8,6 @@ class WebCriteria
       pos_urls: seed_pos_urls,
       neg_paths: seed_neg_paths,
       pos_paths: seed_pos_paths,
-      neg_hrefs: seed_neg_hrefs,
-      pos_hrefs: seed_pos_hrefs,
       neg_exts: seed_neg_exts,
       pos_exts: seed_pos_exts
     }
@@ -31,14 +29,6 @@ class WebCriteria
     %w(team staff management)
   end
 
-  def self.seed_neg_hrefs
-    %w(? .com .jpg @ * afri after anounc apply approved blog book business buy call care career cash charit cheap check click collis commerc cont contrib deal distrib download employ event face feature feed financ find fleet form gas generat golf here holiday hospi hour info insta inventory join later light login mail mobile movie museu music news none now oil part pay phone policy priva pump quick quote rate regist review saving schedul service shop sign site speci ticket tire today transla travel truck tv twitter watch youth)
-  end
-
-  def self.seed_pos_hrefs
-    %w(team staff management)
-  end
-
   def self.seed_neg_exts
      %w(au ca edu es gov in ru uk us)
   end
@@ -46,6 +36,15 @@ class WebCriteria
   def self.seed_pos_exts
      %w(com net)
   end
+
+  # def self.seed_neg_hrefs
+  #   %w(? .com .jpg @ * afri after anounc apply approved blog book business buy call care career cash charit cheap check click collis commerc cont contrib deal distrib download employ event face feature feed financ find fleet form gas generat golf here holiday hospi hour info insta inventory join later light login mail mobile movie museu music news none now oil part pay phone policy priva pump quick quote rate regist review saving schedul service shop sign site speci ticket tire today transla travel truck tv twitter watch youth)
+  # end
+  #
+  # def self.seed_pos_hrefs
+  #   %w(team staff management)
+  # end
+
 
   # ##Rails C: StartCrm.run_webs
   # def self.get_urls

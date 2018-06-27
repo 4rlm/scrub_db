@@ -33,8 +33,6 @@ module ScrubDb
           url_exts: [],
           neg_exts: [],
           pos_exts: [],
-          neg_hrefs: [],
-          pos_hrefs: [],
           neg_paths: [],
           pos_paths: [],
           neg_urls: [],
@@ -60,8 +58,6 @@ module ScrubDb
       url_hash = @filter.scrub_oa(url_hash, url, 'pos_urls', 'include')
       url_hash = @filter.scrub_oa(url_hash, path, 'neg_paths', 'include')
       url_hash = @filter.scrub_oa(url_hash, path, 'pos_paths', 'include')
-      url_hash = @filter.scrub_oa(url_hash, href, 'neg_hrefs', 'include')
-      url_hash = @filter.scrub_oa(url_hash, href, 'pos_hrefs', 'include')
       url_hash
     end
 
