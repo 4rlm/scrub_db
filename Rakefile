@@ -1,7 +1,7 @@
 require "bundler/gem_tasks"
 require "rspec/core/rake_task"
 require 'scrub_db'
-require 'web_criteria'
+require 'webs_criteria'
 
 
 RSpec::Core::RakeTask.new(:spec)
@@ -17,13 +17,79 @@ task :console do
   require "active_support/all"
   ARGV.clear
 
-  scrubbed_urls = scrub_sample_urls
+  # scrubbed_webs = run_scrub_web
+  # scrubbed_strings = run_scrub_strings
+  scrubbed_proper_strings = run_scrub_proper_strings
   binding.pry
 
   IRB.start
 end
 
-def scrub_sample_urls
+
+def run_scrub_strings
+  ## Using WebsCriteria in Scrub Strings ##
+  strings_criteria = {
+    pos_criteria: WebsCriteria.seed_pos_urls,
+    neg_criteria: WebsCriteria.seed_neg_urls
+  }
+
+  strings_obj = ScrubDb::Strings.new(strings_criteria)
+
+  array_of_strings = [
+    'bmw-world of austin',
+    '123 Car-world Kia OF CHICAGO',
+    'BUDGET - AUTOMOTORES ZONA & FRANCA, INC',
+    'DOWNTOWN CAR REPAIR, INC',
+    'Young Gmc Trucks',
+    'TEXAS TRAVEL, CO',
+    'youmans Chevrolet',
+    'Hot-Deal auto Insurance',
+    'quick auto approval, inc',
+    'yazell chevy',
+    'quick cAr LUBE',
+    'yAtEs AuTo maLL',
+    'YADKIN VALLEY COLLISION CO',
+    'XIT FORD INC'
+  ]
+
+  scrubbed_strings = strings_obj.scrub_strings(array_of_strings)
+  binding.pry
+end
+
+
+def run_scrub_proper_strings
+  ## Using WebsCriteria in Scrub Strings ##
+  strings_criteria = {
+    pos_criteria: WebsCriteria.seed_pos_urls,
+    neg_criteria: WebsCriteria.seed_neg_urls
+  }
+
+  strings_obj = ScrubDb::Strings.new(strings_criteria)
+
+  array_of_propers = [
+    'bmw-world of austin',
+    '123 Car-world Kia OF CHICAGO',
+    'BUDGET - AUTOMOTORES ZONA & FRANCA, INC',
+    'DOWNTOWN CAR REPAIR, INC',
+    'Young Gmc Trucks',
+    'TEXAS TRAVEL, CO',
+    'youmans Chevrolet',
+    'Hot-Deal auto Insurance',
+    'quick auto approval, inc',
+    'yazell chevy',
+    'quick cAr LUBE',
+    'yAtEs AuTo maLL',
+    'YADKIN VALLEY COLLISION CO',
+    'XIT FORD INC'
+  ]
+
+  scrubbed_proper_strings = strings_obj.scrub_proper_strings(array_of_propers)
+  binding.pry
+end
+
+
+
+def run_scrub_webs
   urls = %w[
     smith_acura.com/staff
     abcrepair.ca
@@ -42,6 +108,6 @@ def scrub_sample_urls
     www.www.yellowpages.com/business
   ]
 
-  web_obj = ScrubDb::Web.new(WebCriteria.all_web_criteria)
-  scrubbed_webs = web_obj.scrub_urls(urls)
+  webs_obj = ScrubDb::Webs.new(WebsCriteria.all_scrub_web_criteria)
+  scrubbed_webs = webs_obj.scrub_urls(urls)
 end

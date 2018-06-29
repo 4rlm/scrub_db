@@ -1,8 +1,8 @@
-# WebCriteria.new.all_web_criteria
+# WebsCriteria.new.all_scrub_web_criteria
 
-class WebCriteria
+class WebsCriteria
 
-  def self.all_web_criteria
+  def self.all_scrub_web_criteria
     {
       neg_urls: seed_neg_urls,
       pos_urls: seed_pos_urls,
@@ -46,10 +46,10 @@ class WebCriteria
   # end
 
 
-  # ##Rails C: StartCrm.run_webs
+  # ##Rails C: StartCrm.run_scrub_webs
   # def self.get_urls
   #   urls = %w(approvedautosales.org autosmartfinance.com leessummitautorepair.net melodytoyota.com northeastacura.com gemmazda.com)
-  #   urls += %w(website.com website.business.site website website.fake website.fake.com website.com.fake)
+  #   urls += %w(Scrubwebsite.com Scrubwebsite.business.site Scrubwebsite Scrubwebsite.fake Scrubwebsite.fake.com Scrubwebsite.com.fake)
   # end
 
 end

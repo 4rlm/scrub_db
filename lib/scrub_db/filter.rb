@@ -12,6 +12,8 @@ module ScrubDb
     def scrub_oa(hash, target, oa_name, include_or_equal)
       return hash unless oa_name.present? && !@empty_criteria && target.present?
       criteria = @args.fetch(oa_name.to_sym, [])
+      criteria = criteria&.map(&:downcase)
+      target = target.downcase
 
       return hash unless criteria.any?
       tars = target.is_a?(::String) ? target.split(', ') : target
@@ -31,21 +33,12 @@ module ScrubDb
 
       hash[oa_name.to_sym] << scrub_match
       hash
-
-      ### Delete below after testing above. ###
-      # scrub_match = scrub_matches&.uniq&.sort&.join(', ')
-      # return hash unless scrub_match.present?
-      # if oa_name.include?('web_neg')
-      #   hash[:web_neg] << "#{oa_name}: #{scrub_match}"
-      # else
-      #   hash[:web_pos] << "#{oa_name}: #{scrub_match}"
-      # end
     end
     ######################################
 
 
     # def grab_global_hash
-    #   keys = %i[row_id act_name street city state zip full_addr phone url street_f city_f state_f zip_f full_addr_f phone_f url_f url_path web_neg address_status phone_status web_status utf_status]
+    #   keys = %i[row_id act_name street city state zip full_addr phone url street_f city_f state_f zip_f full_addr_f phone_f url_f url_path ScrubWeb_neg address_status phone_status ScrubWeb_status utf_status]
     #   @global_hash = Hash[keys.map { |a| [a, nil] }]
     # end
 

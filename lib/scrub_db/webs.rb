@@ -1,7 +1,7 @@
 
 
 module ScrubDb
-  class Web
+  class Webs
     # attr_accessor :headers, :valid_rows, :encoded_rows, :row_id, :data_hash, :defective_rows, :error_rows
 
     def initialize(criteria={})
@@ -14,7 +14,7 @@ module ScrubDb
       formatted_url_hashes = merge_criteria_hashes(formatted_url_hashes)
 
       formatted_url_hashes.map! do |url_hash|
-        if url_hash[:web_status] != 'invalid' && url_hash[:url_f].present?
+        if url_hash[:ScrubWeb_status] != 'invalid' && url_hash[:url_f].present?
           url_hash[:url_exts] = extract_exts(url_hash)
           url_hash = scrub_url_hash(url_hash)
         end
