@@ -330,14 +330,14 @@ Continuing with the auto dealership example above, the following examples are to
 First step is to load your Strings criteria in hash format.  It's not required to enter all the keys below, but for those you are using, each key must be a symbol and be exactly the same as the ones below.  The values must each be an array of strings.
 
 ```
+pos_criteria = ["acura", "alfa romeo", "aston martin", "audi", "bmw", "bentley", "bugatti", "buick", "cdjr", "cadillac", "chevrolet", "chrysler", "dodge", "ferrari", "fiat", "ford", "gmc", "group", "group", "honda", "hummer", "hyundai", "infiniti", "isuzu", "jaguar", "jeep", "kia", "lamborghini", "lexus", "lincoln", "lotus", "mini", "maserati", "mazda", "mclaren", "mercedes-benz", "mitsubishi", "nissan", "porsche", "ram", "rolls-royce", "saab", "scion", "smart", "subaru", "suzuki", "toyota", "volkswagen", "volvo"]
+
+neg_criteria = %w[approv avis budget collis eat enterprise facebook financ food google gourmet hertz hotel hyatt insur invest loan lube mobility motel motorola parts quick rent repair restaur rv ryder service softwar travel twitter webhost yellowpages yelp youtube]
+
 strings_criteria = {
-      neg_urls: %w[aprov avis budget collis eat],
-      pos_urls: %w[acura audi bmw bentley],
-      neg_paths: %w[buy bye call cash cheap click collis cont distrib],
-      pos_paths: %w[team staff management],
-      neg_exts: %w[au ca edu es gov in ru uk us],
-      pos_exts: %w[com net]
-    }
+  pos_criteria: pos_criteria,
+  neg_criteria: neg_criteria
+}
 
 strings_obj = ScrubDb::Strings.new(strings_criteria)
 ```
@@ -466,14 +466,14 @@ This method is identical to example 2 above (Scrub Array of Strings), except thi
 First step is to load your Strings criteria in hash format.  It's not required to enter all the keys below, but for those you are using, each key must be a symbol and be exactly the same as the ones below.  The values must each be an array of strings.
 
 ```
+pos_criteria = ["acura", "alfa romeo", "aston martin", "audi", "bmw", "bentley", "bugatti", "buick", "cdjr", "cadillac", "chevrolet", "chrysler", "dodge", "ferrari", "fiat", "ford", "gmc", "group", "group", "honda", "hummer", "hyundai", "infiniti", "isuzu", "jaguar", "jeep", "kia", "lamborghini", "lexus", "lincoln", "lotus", "mini", "maserati", "mazda", "mclaren", "mercedes-benz", "mitsubishi", "nissan", "porsche", "ram", "rolls-royce", "saab", "scion", "smart", "subaru", "suzuki", "toyota", "volkswagen", "volvo"]
+
+neg_criteria = %w[approv avis budget collis eat enterprise facebook financ food google gourmet hertz hotel hyatt insur invest loan lube mobility motel motorola parts quick rent repair restaur rv ryder service softwar travel twitter webhost yellowpages yelp youtube]
+
 strings_criteria = {
-      neg_urls: %w[aprov avis budget collis eat],
-      pos_urls: %w[acura audi bmw bentley],
-      neg_paths: %w[buy bye call cash cheap click collis cont distrib],
-      pos_paths: %w[team staff management],
-      neg_exts: %w[au ca edu es gov in ru uk us],
-      pos_exts: %w[com net]
-    }
+  pos_criteria: pos_criteria,
+  neg_criteria: neg_criteria
+}
 
 strings_obj = ScrubDb::Strings.new(strings_criteria)
 ```
