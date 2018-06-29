@@ -12,12 +12,16 @@ module ScrubDb
     def scrub_urls(urls=[])
       formatted_url_hashes = CrmFormatter.format_urls(urls)
       formatted_url_hashes = merge_criteria_hashes(formatted_url_hashes)
+      formatted_url_hashes = pre_scrub(formatted_url_hashes)
+    end
 
-      formatted_url_hashes.map! do |url_hash|
-        if url_hash[:ScrubWeb_status] != 'invalid' && url_hash[:url_f].present?
-          url_hash[:url_exts] = extract_exts(url_hash)
-          url_hash = scrub_url_hash(url_hash)
+    def pre_scrub(hashes)
+      hashes = hashes.map do |hsh|
+        if hsh[:url_f].present?
+          hsh[:url_exts] = extract_exts(hsh)
+          hsh = scrub_url_hash(hsh)
         end
+        hsh
       end
     end
 
