@@ -17,10 +17,10 @@ task :console do
   require "active_support/all"
   ARGV.clear
 
-  # scrubbed_webs = run_scrub_webs
+  scrubbed_webs = run_scrub_webs
   # scrubbed_strings = run_scrub_strings
-  scrubbed_proper_strings = run_scrub_proper_strings
-  binding.pry
+  # scrubbed_proper_strings = run_scrub_proper_strings
+  # binding.pry
 
   IRB.start
 end
