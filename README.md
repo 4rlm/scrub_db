@@ -35,13 +35,17 @@ strings_obj = ScrubDb::Strings.new(strings_criteria)
 
 ##### 2. For Web Criteria
 ```
-webs_criteria = {
-  pos_criteria: %w[your positive criteria here],
-  neg_criteria: %w[your negative criteria here]
+web_criteria = {
+  neg_urls: %w[aprov avis budget collis eat],
+  pos_urls: %w[acura audi bmw bentley],
+  neg_paths: %w[buy bye call cash cheap click collis cont distrib],
+  pos_paths: %w[team staff management],
+  neg_exts: %w[au ca edu es gov in ru uk us],
+  pos_exts: %w[com net]
 }
-webs_obj = ScrubDb::Webs.new(webs_criteria)
-```
 
+scrub_web_obj = ScrubDb::Webs.new(web_criteria)
+```
 
 
 #### Step 2: Load Your Data to Scrub:
