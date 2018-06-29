@@ -5,35 +5,61 @@ module ScrubDb
 
     def initialize(args={})
       @args = args
-      # @global_hash = grab_global_hash
       @empty_criteria = args.empty?
     end
 
     def scrub_oa(hash, target, oa_name, include_or_equal)
       return hash unless oa_name.present? && !@empty_criteria && target.present?
-      criteria = @args.fetch(oa_name.to_sym, [])
-      criteria = criteria&.map(&:downcase)
-      target = target.downcase
+      criteria = fetch_criteria(oa_name)
 
       return hash unless criteria.any?
-      tars = target.is_a?(::String) ? target.split(', ') : target
-      binding.pry if !tars.present?
+      target = prep_target(target)
+      tars = target_to_tars(target)
+      scrub_matches = match_criteria(tars, include_or_equal, criteria)
+      string_match = stringify_matches(scrub_matches)
+      hash = match_to_hash(hash, string_match, oa_name)
+    end
 
+    def match_to_hash(hsh, match, oa_name)
+      return hsh unless match.present?
+      hsh[oa_name.to_sym] << match
+      hsh
+    end
+
+    def stringify_matches(matches=[])
+      string_match = matches&.uniq&.sort&.join(', ') if matches.any?
+    end
+
+    def fetch_criteria(oa_name)
+      criteria = @args.fetch(oa_name.to_sym, [])
+      criteria = criteria&.map(&:downcase)
+    end
+
+
+    def match_criteria(tars, include_or_equal, criteria)
       scrub_matches = tars.map do |tar|
-        return hash unless criteria.present?
         if include_or_equal == 'include'
-          criteria.select { |crit| crit if tar.include?(crit) }.join(', ')
+          criteria.map { |crit| crit if tar.include?(crit) }
         elsif include_or_equal == 'equal'
-          criteria.select { |crit| crit if tar == crit }.join(', ')
+          criteria.map { |crit| crit if tar == crit }
         end
       end
-
-      scrub_match = scrub_matches&.uniq&.sort&.join(', ')
-      return hash unless scrub_match.present?
-
-      hash[oa_name.to_sym] << scrub_match
-      hash
+      scrub_matches = scrub_matches.flatten.compact
     end
+
+    def prep_target(target)
+      target = target.join if target.is_a?(Array)
+      target = target.downcase
+      target = target.gsub(',', ' ')
+      target = target.gsub('-', ' ')
+      target = target.squeeze(' ')
+    end
+
+    def target_to_tars(target)
+      tars = target.is_a?(::String) ? target.split(' ') : target
+    end
+
+
     ######################################
 
 

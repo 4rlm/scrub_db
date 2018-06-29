@@ -17,34 +17,33 @@ task :console do
   require "active_support/all"
   ARGV.clear
 
-  # scrubbed_webs = run_scrub_web
+  scrubbed_webs = run_scrub_webs
   # scrubbed_strings = run_scrub_strings
-  scrubbed_proper_strings = run_scrub_proper_strings
-  binding.pry
+  # scrubbed_proper_strings = run_scrub_proper_strings
+  # binding.pry
 
   IRB.start
 end
 
 
 def run_scrub_strings
-  ## Using WebsCriteria in Scrub Strings ##
   strings_criteria = {
     pos_criteria: WebsCriteria.seed_pos_urls,
     neg_criteria: WebsCriteria.seed_neg_urls
   }
 
-  strings_obj = ScrubDb::Strings.new(strings_criteria)
-
   array_of_strings = [
-    'bmw-world of austin',
-    '123 Car-world Kia OF CHICAGO',
-    'BUDGET - AUTOMOTORES ZONA & FRANCA, INC',
-    'DOWNTOWN CAR REPAIR, INC',
-    'Young Gmc Trucks',
-    'TEXAS TRAVEL, CO',
-    'youmans Chevrolet',
-    'Hot-Deal auto Insurance',
     'quick auto approval, inc',
+    'the gmc and bmw-world of AUSTIN tx',
+    'DOWNTOWN CAR REPAIR, INC',
+    'TEXAS TRAVEL, CO',
+    '123 Car-world Kia OF CHICAGO IL',
+    'Main Street Ford in DALLAS tX',
+    'broad st fiat of houston',
+    'hot-deal auto insurance',
+    'BUDGET - AUTOMOTORES ZONA & FRANCA, INC',
+    'Young Gmc Trucks',
+    'youmans Chevrolet',
     'yazell chevy',
     'quick cAr LUBE',
     'yAtEs AuTo maLL',
@@ -52,30 +51,29 @@ def run_scrub_strings
     'XIT FORD INC'
   ]
 
+  strings_obj = ScrubDb::Strings.new(strings_criteria)
   scrubbed_strings = strings_obj.scrub_strings(array_of_strings)
-  binding.pry
 end
 
 
 def run_scrub_proper_strings
-  ## Using WebsCriteria in Scrub Strings ##
   strings_criteria = {
     pos_criteria: WebsCriteria.seed_pos_urls,
     neg_criteria: WebsCriteria.seed_neg_urls
   }
 
-  strings_obj = ScrubDb::Strings.new(strings_criteria)
-
   array_of_propers = [
-    'bmw-world of austin',
-    '123 Car-world Kia OF CHICAGO',
-    'BUDGET - AUTOMOTORES ZONA & FRANCA, INC',
-    'DOWNTOWN CAR REPAIR, INC',
-    'Young Gmc Trucks',
-    'TEXAS TRAVEL, CO',
-    'youmans Chevrolet',
-    'Hot-Deal auto Insurance',
     'quick auto approval, inc',
+    'the gmc and bmw-world of AUSTIN tx',
+    'DOWNTOWN CAR REPAIR, INC',
+    'TEXAS TRAVEL, CO',
+    '123 Car-world Kia OF CHICAGO IL',
+    'Main Street Ford in DALLAS tX',
+    'broad st fiat of houston',
+    'hot-deal auto insurance',
+    'BUDGET - AUTOMOTORES ZONA & FRANCA, INC',
+    'Young Gmc Trucks',
+    'youmans Chevrolet',
     'yazell chevy',
     'quick cAr LUBE',
     'yAtEs AuTo maLL',
@@ -83,8 +81,8 @@ def run_scrub_proper_strings
     'XIT FORD INC'
   ]
 
+  strings_obj = ScrubDb::Strings.new(strings_criteria)
   scrubbed_proper_strings = strings_obj.scrub_proper_strings(array_of_propers)
-  binding.pry
 end
 
 
