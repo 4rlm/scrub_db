@@ -12,8 +12,8 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'https://github.com/4rlm/scrub_db'
   spec.license       = "MIT"
 
-  spec.summary       = %q{Scrub your database, api data, web scraping data, and web form submissions based on your your custom criteria.  Allows for different criteria for different jobs.  Returns detailed reporting to zero-in on your data with ease, efficiency, and greater insight.}
-  spec.description   = %q{Scrub your database, api data, web scraping data, and web form submissions based on your your custom criteria.  Allows for different criteria for different jobs.  Returns detailed reporting to zero-in on your data with ease, efficiency, and greater insight.  Allows for option to pre-format data before scrubbing to also normalize and standardize your data sets, ex uniform URL patterns}
+  spec.summary       = %q{Scrub your database, api data, web scraping data, and web form submissions based on your custom criteria.  Allows for different criteria for different jobs.  Returns detailed reporting to zero-in on your data with ease, efficiency, and greater insight.}
+  spec.description   = %q{Scrub your database, api data, web scraping data, and web form submissions based on your custom criteria.  Allows for different criteria for different jobs.  Returns detailed reporting to zero-in on your data with ease, efficiency, and greater insight.  Allows for option to pre-format data before scrubbing to also normalize and standardize your data sets, ex uniform URL patterns}
 
   if spec.respond_to?(:metadata)
     spec.metadata['allowed_push_host'] = 'https://rubygems.org'
