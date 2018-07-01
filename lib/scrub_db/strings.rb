@@ -2,7 +2,7 @@
 
 module ScrubDb
   class Strings
-    # attr_accessor :headers, :valid_rows, :encoded_rows, :row_id, :data_hash, :defective_rows, :error_rows
+    attr_accessor :filter, :empty_criteria
 
     def initialize(criteria={})
       @empty_criteria = criteria&.empty?
