@@ -4,7 +4,6 @@
 [![Gem Version](https://badge.fury.io/rb/scrub_db.svg)](https://badge.fury.io/rb/scrub_db)
 [![MIT License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-
 #### Scrub your database, api data, web scraping data, and web form submissions based on your custom criteria.  Allows for different criteria for different jobs.  Returns detailed reporting to zero-in on your data with ease, efficiency, and greater insight.  Allows for option to pre-format data before scrubbing to also normalize and standardize your data sets, ex uniform URL patterns
 
 ## Installation
