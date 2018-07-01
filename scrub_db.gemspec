@@ -1,7 +1,6 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'scrub_db'
 require "scrub_db/version"
 
 Gem::Specification.new do |spec|
