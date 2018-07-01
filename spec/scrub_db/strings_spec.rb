@@ -1,6 +1,7 @@
 
 # rspec spec/scrub_db/strings_spec.rb
 require 'spec_helper'
+require 'crm_formatter'
 
 describe 'Strings' do
   let(:pos_criteria) do
