@@ -1,7 +1,7 @@
 
 require 'scrub_db'
-require 'crm_formatter'
 require 'spec_helper'
+require 'crm_formatter'
 
 RSpec.describe ScrubDb do
   # let(:scrub_obj) { ScrubDb }
