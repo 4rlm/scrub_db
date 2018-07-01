@@ -17,8 +17,8 @@ task :console do
   require "active_support/all"
   ARGV.clear
 
-  scrubbed_webs = run_scrub_webs
-  # scrubbed_strings = run_scrub_strings
+  # scrubbed_webs = run_scrub_webs
+  scrubbed_strings = run_scrub_strings
   # scrubbed_proper_strings = run_scrub_proper_strings
   # binding.pry
 
@@ -33,8 +33,8 @@ def run_scrub_strings
   }
 
   array_of_strings = [
-    'quick auto approval, inc',
-    'the gmc and bmw-world of AUSTIN tx',
+    'quick auto-approval gmc and bmw-world of AUSTIN tx, INC',
+    'quick auto-approval, inc',
     'DOWNTOWN CAR REPAIR, INC',
     'TEXAS TRAVEL, CO',
     '123 Car-world Kia OF CHICAGO IL',

@@ -2,6 +2,7 @@
 
 module ScrubDb
   class Filter
+    attr_accessor :args, :empty_criteria
 
     def initialize(args={})
       @args = args

@@ -1,3 +1,3 @@
 module ScrubDb
-  VERSION = "2.1"
+  VERSION = "2.21"
 end
