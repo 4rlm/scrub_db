@@ -2,7 +2,6 @@
 
 # rspec spec/scrub_db/filter_spec.rb
 require 'spec_helper'
-require 'crm_formatter'
 
 describe 'Filter' do
   let(:filter_obj) { ScrubDb::Filter.new }

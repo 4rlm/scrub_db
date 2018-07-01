@@ -2,7 +2,6 @@
 # rspec spec/scrub_db/webs_spec.rb
 require 'spec_helper'
 require 'webs_criteria'
-require 'crm_formatter'
 
 describe 'Webs' do
   let(:webs_obj) { ScrubDb::Webs.new }
