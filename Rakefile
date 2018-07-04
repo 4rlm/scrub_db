@@ -21,7 +21,6 @@ task :console do
   # scrubbed_proper_strings = run_scrub_proper_strings
   # scrubbed_strings = run_scrub_strings
   scrubbed_hash = run_scrub_string
-  binding.pry
   scrubbed_hash = run_scrub_proper_string
   binding.pry
 
