@@ -18,11 +18,36 @@ task :console do
   ARGV.clear
 
   # scrubbed_webs = run_scrub_webs
-  scrubbed_proper_strings = run_scrub_proper_strings
+  # scrubbed_proper_strings = run_scrub_proper_strings
   # scrubbed_strings = run_scrub_strings
-  # binding.pry
+  scrubbed_hash = run_scrub_string
+  binding.pry
+  scrubbed_hash = run_scrub_proper_string
+  binding.pry
 
   IRB.start
+end
+
+
+def run_scrub_string
+  strings_criteria = {
+    pos_criteria: WebsCriteria.seed_pos_urls,
+    neg_criteria: WebsCriteria.seed_neg_urls
+  }
+  string = 'quick auto-approval gmc and bmw-world of AUSTIN tx, INC'
+  strings_obj = ScrubDb::Strings.new(strings_criteria)
+  scrubbed_hash = strings_obj.scrub_string(string)
+end
+
+
+def run_scrub_proper_string
+  strings_criteria = {
+    pos_criteria: WebsCriteria.seed_pos_urls,
+    neg_criteria: WebsCriteria.seed_neg_urls
+  }
+  string = 'quick auto-approval gmc and bmw-world of AUSTIN tx, INC'
+  strings_obj = ScrubDb::Strings.new(strings_criteria)
+  scrubbed_hash = strings_obj.scrub_proper_string(string)
 end
 
 
@@ -82,9 +107,8 @@ def run_scrub_proper_strings
   ]
 
   strings_obj = ScrubDb::Strings.new(strings_criteria)
-  scrubbed_proper_strings = strings_obj.scrub_proper_strings(array_of_propers)
+  scrubbed_proper_strings = strings_obj.scrub_proper_strings(array_of_strings)
 end
-
 
 
 def run_scrub_webs
