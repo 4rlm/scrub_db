@@ -17,8 +17,8 @@ task :console do
   require "active_support/all"
   ARGV.clear
 
-  scrubbed_webs = run_scrub_webs
-  # scrubbed_proper_strings = run_scrub_proper_strings
+  # scrubbed_webs = run_scrub_webs
+  scrubbed_proper_strings = run_scrub_proper_strings
   # scrubbed_strings = run_scrub_strings
   # binding.pry
 

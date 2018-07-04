@@ -37,11 +37,11 @@ class WebsCriteria
      %w(com net)
   end
 
-  # def self.seed_neg_hrefs
+  # def self.seed_neg_paths
   #   %w(? .com .jpg @ * afri after anounc apply approved blog book business buy call care career cash charit cheap check click collis commerc cont contrib deal distrib download employ event face feature feed financ find fleet form gas generat golf here holiday hospi hour info insta inventory join later light login mail mobile movie museu music news none now oil part pay phone policy priva pump quick quote rate regist review saving schedul service shop sign site speci ticket tire today transla travel truck tv twitter watch youth)
   # end
   #
-  # def self.seed_pos_hrefs
+  # def self.seed_pos_paths
   #   %w(team staff management)
   # end
 

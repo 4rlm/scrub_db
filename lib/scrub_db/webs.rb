@@ -53,7 +53,7 @@ module ScrubDb
     def scrub_url_hash(url_hash)
       url = url_hash[:url_f]
       path = url_hash[:url_path]
-      href = url_hash[:href]
+      path = url_hash[:path]
       url_exts = url_hash[:url_exts]
 
       url_hash = @filter.scrub_oa(url_hash, url_exts, 'neg_exts', 'equal')
